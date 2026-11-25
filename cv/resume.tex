@@ -1,0 +1,175 @@
+%-------------------------
+% Reusable CV template
+% Author : Manuel de Labra
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\footskip}{4.08003pt}
+
+\titleformat{\section}{
+  \vspace{-7pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeProjectHeading}[3]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+      \vspace{1pt}
+      \textit{\small#3}
+    \end{tabular*}\vspace{-7pt}
+}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\def\name{\textbf{\Huge \scshape Jose Manuel Hernandez de Labra}}
+\def\phone{\small +(34) 674-980-432 }
+\def\mail{\href{mailto:jmhlabra@gmail.com}{\underline{jmhlabra@gmail.com }}}
+\def\linkedin{\href{https://linkedin.com/in/jmhlabra}{\underline{linkedin.com/jmhlabra }}}
+\def\github{\href{https://github.com/Labrapuerta}{\underline{github.com/Labrapuerta }}}
+
+\newcommand{\cvEducation}{%
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {B.Sc. in Biomedical Engineering with a Minor in Neuroscience}{Monterrey, NL, Mexico}
+      {\href{https://tec.mx/en}{\underline{Tecnologico de Monterrey (ITESM)}}}{Aug. 2018 -- Dec 2023}
+    \resumeSubheading
+      {M.Sc. in Bioinformatics for Health Sciences}{Barcelona, Spain}
+      {Jointly organized by {\href{https://www.upf.edu/}{\underline{Universitat Pompeu Fabra (UPF)}}} and the {\href{https://web.ub.edu/es/}{\underline{University of Barcelona (UB)}}}}{Sep. 2025 -- Present}
+  \resumeSubHeadingListEnd
+}
+
+\newcommand{\cvExperience}{%
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Core Lab Genomics}{Monterrey, Mexico}
+      {Machine Learning Engineer}{Jan. 2024 -- May. 2025}
+      \resumeItemListStart
+        \resumeItem{Designed and optimized machine learning architectures for RNA and biomolecule analysis.}
+        \resumeItem{Predicted 3D RNA structures, contributing to advancements in molecular interaction studies.}
+        \resumeItem{Applied advanced docking algorithms to predict biomolecule-protein interactions, aiding in therapeutic target discovery.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {{\href{https://www.almirall.es/}{\underline{Almirall}}}}{Barcelona, Spain}
+      {R$\&$D AI Trainee}{June 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Developing and refactoring an end-to-end biomedical GraphRAG pipeline for drug-discovery and target-discovery workflows, integrating graph retrieval, LLMs, and evidence traceability.}
+        \resumeItem{Optimizing entity grounding, subgraph retrieval, and data processing under runtime, memory, and context-size constraints.}
+        \resumeItem{Designing controlled experiments and evaluation pipelines to study retrieval quality, factuality, provenance, and computational efficiency.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+}
+
+\newcommand{\cvResearchProjects}{%
+\section{Research Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{\underline{Biomedical GraphRAG}} $|$ \emph{PyTorch, PrimeKG, OptimusKG, SapBERT, LLMs}}{Sep. 2026 -- Present}
+      {M.Sc. Thesis with {\href{https://www.almirall.com/}{\underline{Almirall}}} \& {\href{https://www.dtu.dk/}{\underline{DTU}}} $|$ Supervisors: {\href{https://es.linkedin.com/in/sergi-picart}{\underline{Sergi Picart Armada}}}, {\href{https://scholar.google.com/citations?user=8ufdIFAAAAAJ&hl=en}{\underline{Alberto Santos}}}}
+      \resumeItemListStart
+        \resumeItem{Building a traceable, fact-checked GraphRAG pipeline for biomedical drug discovery and hypothesis generation over PrimeKG and OptimusKG.}
+        \resumeItem{Researching a PageRank and message-passing diffusion retriever with a ReLU threshold to isolate compact supporting subgraphs.}
+        \resumeItem{Developed biomedical embedding blending over SapBERT for domain-aware entity grounding and claim-to-evidence provenance.}
+      \resumeItemListEnd
+    \vspace{2pt}
+    \resumeProjectHeading
+      {\href{https://github.com/Labrapuerta/GraphBind}{\textbf{\underline{GraphBind}}} $|$ \emph{Python, PyTorch Geometric, EGNN, Evoformer, ESM-2, PyMOL}}{Feb. 2026 -- Apr. 2026}
+      {Open-Source Structural Bioinformatics Project}
+      \resumeItemListStart
+        \resumeItem{Built a two-stage model for protein--ligand binding site prediction on BioLiP graphs, combining 3D equivariant GNNs (EGNN) with Evoformer-style attention and AlphaFold2-inspired recycling.}
+        \resumeItem{Engineered residue graphs with ESM-2 embeddings, biochemical and Coulomb features, and a CLI PyMOL visualization pipeline.}
+      \resumeItemListEnd
+    \vspace{2pt}
+    \resumeProjectHeading
+      {\textbf{\underline{STRAND}} $|$ \emph{Python, Azure, Pytorch, Molecular Dynamics}}{Jan. 2024 -- Jan. 2025}
+      {{\href{https://tec.mx/es/investigacion}{\underline{Tecnologico de Monterrey}}} in collaboration with {\href{https://www.microsoft.com/en-us/research/group/ai-for-good-research-lab/}{\underline{Microsoft AI For Good Lab}}}}
+      \resumeItemListStart
+        \resumeItem{Researched RNA 3D structure prediction, generating labeled datasets with precise intramolecular bindings.}
+        \resumeItem{Developed graph neural networks for secondary structure contact maps used as templates for 3D RNA folding.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+}
+
+\newcommand{\cvSkills}{%
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programing Languages}{: Python, Assembler, Bash, SQL, C, C++, CUDA, LaTeX} \\
+     \textbf{Developer Tools}{: Git, Docker, Azure, Conda} \\
+     \textbf{ML Frameworks}{: Tensorflow, Pytorch, SkLearn, PyTorch Geometric} \\
+     \textbf{Languages}{: \textbf{Spanish}{ - (Native)}, \textbf{English}{ - (C1)}, \textbf{French}{ - (A1)} }
+    }}
+ \end{itemize}
+}
+
+\newcommand{\cvAdditionalInfo}{%
+\section{Additional Information}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Awards and Achievements}\\
+        \vspace{-.2cm}
+        \resumeItemListStart
+          \resumeItem{\textbf{Two Gold Medals, iGEM Competition (2022, 2023)} – Recognized for excellence in synthetic biology research and innovative solutions.}
+          \resumeItem{\textbf{Judge, iGEM Competition (2024, 2025, 2026)} – Selected three times to evaluate and mentor competing teams, showcasing leadership and subject matter expertise.}
+        \resumeItemListEnd
+    }}
+ \end{itemize}
+}
+
+\IfFileExists{content_cv.tex}{\input{content_cv.tex}}{}
+
+\begin{document}
+\begin{center}
+  \name \\ \vspace{1pt}
+  \phone $ |$ \mail $|$ \linkedin $|$ \github
+\end{center}
+
+\cvEducation
+\cvExperience
+\cvResearchProjects
+\cvSkills
+\cvAdditionalInfo
+\end{document}

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Manuel de Labra focuses on software, optimization, and applied mathematics for machine learning and biomedical problems."
+    />
+    <meta name="author" content="Manuel de Labra" />
+    <title>Manuel de Labra | Machine Learning &amp; Biology</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="assets/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Manuel de Labra, home">
+          <span class="brand-mark">ML</span>
+          <span class="brand-name">Manuel de Labra</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="about.html">About</a>
+          <a href="cv.html">CV</a>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero hero-research container">
+        <div class="profile-panel">
+          <div class="identity">
+            <img
+              class="profile-photo"
+              src="https://github.com/Labrapuerta.png?size=320"
+              alt="Portrait of Manuel de Labra"
+              width="160"
+              height="160"
+            />
+            <div>
+              <p class="eyebrow">Barcelona · ML researcher</p>
+              <h1>Manuel de Labra</h1>
+              <p class="profile-role">Software × optimization × biomedical ML</p>
+            </div>
+          </div>
+
+          <p class="profile-bio">
+            I’m an MSc student at <a class="inline-link" href="https://www.upf.edu/">UPF</a> and
+            <a class="inline-link" href="https://web.ub.edu/es/">UB</a>, working at
+            <a class="inline-link" href="https://www.almirall.es/">Almirall</a> and advised
+            by <a class="inline-link" href="https://es.linkedin.com/in/sergi-picart">Sergi Picart Armada</a>
+            and <a class="inline-link" href="https://scholar.google.com/citations?user=8ufdIFAAAAAJ&amp;hl=en">Alberto Santos</a>
+            on AI for biology. I use graph-based machine learning and efficient
+            software to accelerate biomedical discovery and drug research. I
+            focus on software, optimization, and understanding the mathematics
+            behind machine learning systems, so I can apply them to biological
+            and biomedical problems.
+          </p>
+
+          <div class="social-links" aria-label="Profiles and contact">
+            <a href="https://github.com/Labrapuerta">
+              <span aria-hidden="true">GH</span> GitHub
+            </a>
+            <a href="https://linkedin.com/in/jmhlabra">
+              <span aria-hidden="true">IN</span> LinkedIn
+            </a>
+            <a href="mailto:jmhlabra@gmail.com">
+              <span aria-hidden="true">@</span> Email
+            </a>
+            <a href="assets/Manuel_de_Labra_CV.pdf">
+              <span aria-hidden="true">CV</span> Curriculum vitae
+            </a>
+          </div>
+        </div>
+
+        <figure class="visualizer-shell" id="research" aria-labelledby="visualizer-title">
+          <figcaption class="visualizer-header">
+            <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span id="visualizer-title">Research visualizer</span>
+            <span class="status-badge">Prototype</span>
+          </figcaption>
+          <div class="visualizer-stage">
+            <svg viewBox="0 0 620 390" role="img" aria-labelledby="graph-title graph-desc">
+              <title id="graph-title">Biomedical knowledge graph placeholder</title>
+              <desc id="graph-desc">A static network of connected nodes representing a future graph retrieval visualizer.</desc>
+              <g class="graph-edges">
+                <path d="M110 200 215 105 340 170 485 92" />
+                <path d="M110 200 220 285 340 170 510 278" />
+                <path d="M215 105 220 285" />
+                <path d="M340 170 380 318 510 278" />
+                <path d="M485 92 510 278" />
+                <path d="M220 285 380 318" />
+              </g>
+              <g class="graph-nodes">
+                <g transform="translate(110 200)">
+                  <circle r="24" class="node-primary" />
+                  <text y="4">R</text>
+                </g>
+                <g transform="translate(215 105)">
+                  <circle r="17" />
+                  <text y="4">P</text>
+                </g>
+                <g transform="translate(220 285)">
+                  <circle r="18" />
+                  <text y="4">D</text>
+                </g>
+                <g transform="translate(340 170)">
+                  <circle r="31" class="node-accent" />
+                  <text y="4">KG</text>
+                </g>
+                <g transform="translate(380 318)">
+                  <circle r="15" />
+                  <text y="4">G</text>
+                </g>
+                <g transform="translate(485 92)">
+                  <circle r="20" />
+                  <text y="4">M</text>
+                </g>
+                <g transform="translate(510 278)">
+                  <circle r="23" />
+                  <text y="4">T</text>
+                </g>
+              </g>
+            </svg>
+            <div class="visualizer-overlay">
+              <span>GraphRAG</span>
+              <strong>Building the first interactive view</strong>
+            </div>
+          </div>
+          <div class="visualizer-footer">
+            <span><i class="live-dot" aria-hidden="true"></i> Biomedical knowledge graph</span>
+            <span>nodes / paths / evidence</span>
+          </div>
+        </figure>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Selected project</p>
+              <h2>GraphBind</h2>
+            </div>
+            <span class="section-note">01 / Protein binding-site prediction</span>
+          </div>
+
+          <article class="project-feature">
+            <a class="project-media" href="assets/graphbind-architecture.png">
+              <img
+                src="assets/graphbind-architecture.png"
+                alt="GraphBind model architecture combining E(3)-equivariant graph encoding and attention refinement"
+                width="1380"
+                height="752"
+              />
+              <span>Open architecture figure <span aria-hidden="true">↗</span></span>
+            </a>
+            <div class="project-copy">
+              <div class="project-kicker">
+                <span class="status-badge status-active">Research software</span>
+                <span>PyTorch Geometric</span>
+              </div>
+              <h3>Predicting protein binding sites from structure graphs</h3>
+              <p>
+                GraphBind combines E(3)-equivariant graph neural networks with
+                attention-based recycling to estimate residue-level ligand
+                binding sites from protein structure and sequence-derived features.
+              </p>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">GNN</span>
+                <span class="tag">Evoformer</span>
+                <span class="tag">BioML</span>
+              </div>
+              <div class="project-links">
+                <a class="button button-primary" href="https://github.com/Labrapuerta/GraphBind">
+                  View repository <span aria-hidden="true">↗</span>
+                </a>
+                <a class="button button-secondary" href="https://github.com/Labrapuerta/GraphBind/blob/main/report/GraphBind.pdf">
+                  Read the report <span>PDF</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="publications">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Publications &amp; thesis</p>
+              <h2>Research in progress</h2>
+            </div>
+            <span class="section-note">Notes, papers, and thesis work</span>
+          </div>
+
+          <article class="publication-entry">
+            <div class="publication-meta">
+              <span>Thesis</span>
+              <span>In progress</span>
+            </div>
+            <div class="publication-body">
+              <p class="publication-label">Graph retrieval · Evidence traceability · Drug discovery</p>
+              <h3>Traceable and Evidence-Grounded Biomedical GraphRAG for Drug Discovery</h3>
+              <p>
+                A research proposal for an end-to-end biomedical GraphRAG system
+                that studies retrieval, verification, evidence provenance, and
+                computational efficiency for drug-discovery and target-prioritization
+                questions.
+              </p>
+              <div class="publication-status">
+                <span class="status-badge status-wip">Writing in progress</span>
+                <a class="text-link" href="research/GraphRAG_Research_Proposal.pdf" download>
+                  Download proposal <span>PDF</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-main">
+          <div>
+            <p class="eyebrow">Open to research collaboration</p>
+            <h2>Science, software, and careful engineering.</h2>
+            <a class="text-link" href="mailto:jmhlabra@gmail.com">
+              Get in touch <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="footer-links">
+            <a href="https://github.com/Labrapuerta">GitHub</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="cv.html">CV</a>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>© <span data-year></span> Manuel de Labra</span>
+          <span>Barcelona, Spain</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

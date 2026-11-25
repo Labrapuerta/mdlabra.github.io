@@ -1,0 +1,323 @@
+
+\begin{center}
+{\color{accent}\rule{0.72\linewidth}{0.6pt}}\\[0.8em]
+{\Large\bfseries\color{ink}Research Proposal}\\[0.55em]
+{\LARGE\bfseries\color{ink}Traceable and Evidence-Grounded Biomedical GraphRAG for Drug Discovery: Retrieval, Verification, and Computational Efficiency}\\[1em]
+\begin{tabular}{@{}rl@{}}
+\textbf{Author} & José Manuel Hernández de Labra\\
+\textbf{Programme} & MSc in Bioinformatics for Health Sciences\\
+\textbf{Institution} & Universitat Pompeu Fabra\\
+\textbf{Supervisors} & \href{https://es.linkedin.com/in/sergi-picart}{Sergi Picart Armada}; \href{https://scholar.google.com/citations?user=8ufdIFAAAAAJ&hl=en}{Alberto Santos}\\
+\textbf{Collaborators} & \href{https://www.almirall.com/}{Almirall}; \href{https://www.dtu.dk/}{DTU}\\
+\textbf{Submission date} & November 17, 2026
+\end{tabular}\\[0.7em]
+{\color{accent}\rule{0.72\linewidth}{0.6pt}}
+\end{center}
+
+\section{Keywords}\label{keywords}
+
+GraphRAG; biomedical knowledge graphs; drug discovery; target prioritization; subgraph retrieval; evidence traceability; factuality; provenance; temporal evaluation; computational efficiency.
+
+\section{Introduction}\label{introduction}
+
+\subsubsection{Retrieval-augmented generation and graph-structured knowledge}\label{retrieval-augmented-generation-and-graph-structured-knowledge}
+
+Retrieval-augmented generation combines a language model with information retrieved from an external knowledge source. This architecture allows generation to be conditioned on retrieved material rather than relying exclusively on knowledge encoded in model parameters. Its effectiveness nevertheless depends on retrieving appropriate information and using it correctly; the presence of external context does not itself guarantee a factual or adequately supported answer (Lewis et al., 2020).\refmark{1}
+
+Graph-based retrieval-augmented generation, or GraphRAG, applies this principle to graph-structured information. A graph represents entities and their relationships explicitly, allowing retrieval to exploit connections distributed across multiple records. A general GraphRAG architecture comprises query processing, graph retrieval, organization of the retrieved evidence, and generation, supported by an underlying graph data source (Han et al., 2025).\refmark{2}
+
+GraphRAG is a family of approaches rather than a single implementation. Edge et al.~introduced a document-oriented approach using graph communities to support query-focused summarization. G-Retriever investigates relevant-subgraph extraction using a prize-collecting Steiner tree formulation. HippoRAG incorporates personalized PageRank, while GNN-RAG and GFM-RAG investigate learned graph-based retrieval. These approaches provide complementary methodological foundations for studying how semantic relevance, graph connectivity, and computational constraints influence retrieval and generation (Edge et al., 2024; He et al., 2024; Jiménez Gutiérrez et al., 2024; Mavromatis and Karypis, 2025; Luo et al., 2025).\refmark{3}\refmark{4}\refmark{5}\refmark{6}\refmark{7}
+
+\subsubsection{Biomedical requirements}\label{biomedical-requirements}
+
+Biomedical knowledge graphs provide a relevant application setting because discovery questions often concern relationships among diseases, molecular targets, biological processes, and therapeutic interventions. PrimeKG integrates heterogeneous biomedical resources into a precision-medicine-oriented graph. OptimusKG extends biomedical knowledge representation through ontology-grounded integration and property-rich representations with type-specific metadata (Chandak et al., 2023; Vittor et al., 2026).\refmark{8}\refmark{9}
+
+Applying GraphRAG to these resources requires attention to the meaning and provenance of the represented information. Entity names may have synonyms, abbreviations, and multiword expressions, while relationships connect different biological entity types and cannot be interpreted as interchangeable links. SapBERT, for example, addresses the alignment of biomedical synonyms in entity representations, illustrating the importance of domain-aware entity grounding (Liu et al., 2021).\refmark{10}
+
+Biomedical graph-grounded generation already has important precedents. Soman et al.~developed a token-optimized KG-RAG framework over SPOKE, while MedGraphRAG investigates graph-based retrieval for evidence-based medical generation. These studies establish the relevance of the approach but do not determine which retrieval and context-organization strategies are most suitable for the discovery-oriented workflows considered here (Soman et al., 2024; Wu et al., 2025).\refmark{11}\refmark{12}
+
+The proposed project therefore does not seek to introduce biomedical GraphRAG as a new category. It investigates how an end-to-end system should be designed and evaluated when biomedical relevance, evidence traceability, and computational feasibility are treated jointly.
+
+\subsubsection{Traceability, factuality, and verification}\label{traceability-factuality-and-verification}
+
+A central concern is whether a generated claim can be traced to identifiable supporting evidence. Answer correctness and evidence attribution are related but distinct: an answer may contain a correct statement that is unsupported by the supplied context, while an attached citation may not justify the statement it accompanies. ALCE provides a relevant foundation for evaluating factual correctness alongside citation correctness and completeness (Gao et al., 2023).\refmark{13}
+
+This project will investigate how provenance can be preserved from the knowledge source through retrieval and context construction to the generated answer. The intended outcome is an inspectable evidence trail that distinguishes directly recorded relationships, interpretations derived from multiple relationships, and exploratory hypotheses.
+
+Evidence attribution must also be distinguished from access to the language model's internal reasoning. A generated explanation is not necessarily a faithful account of the factors that produced an answer. Consequently, the project will investigate evidence dependence through controlled experiments rather than treating the model's own explanation as proof of its internal reasoning process (Turpin et al., 2023).\refmark{14}
+
+\subsubsection{Evaluation gap and research scope}\label{evaluation-gap-and-research-scope}
+
+Conventional medical question-answering benchmarks, including MIRAGE, provide useful evaluation tasks but do not directly establish whether a retrieved subgraph supports a discovery hypothesis or a mechanistic explanation (Xiong et al., 2024).\refmark{15}
+
+Temporally informed evaluation offers a complementary perspective. PrimeKG-CL studies evolving biomedical graph snapshots, while THBKG examines target--disease evidence under historical decision constraints. These developments motivate evaluating historical evidence and later-supported relationships, while also requiring careful positioning of the proposed benchmark against existing work (Radwan et al., 2026; Siu et al., 2026).\refmark{16}\refmark{17}
+
+The present research will prioritize a complete, reproducible pipeline and a controlled comparison of retrieval approaches. Temporal benchmarking and multi-model evidence synthesis will be investigated as complementary work packages, with their final scope determined by data quality and project resources.
+
+\section{Working Hypotheses}\label{working-hypotheses}
+
+The study will investigate the following hypotheses:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Domain-aware entity grounding that combines multiword mention identification with lexical and semantic matching will improve seed selection relative to simpler matching approaches.
+\item
+  Retrieval strategies that consider both query relevance and graph connectivity will provide more useful biomedical evidence than methods based exclusively on semantic similarity or local neighborhoods.
+\item
+  Preserving provenance and explicit claim-to-evidence links will improve the auditability of generated answers, although this will not necessarily imply higher factual accuracy.
+\item
+  Context organization will influence attribution quality and answer stability, even when the underlying retrieved evidence remains unchanged.
+\item
+  A grounded system will respond appropriately when relevant evidence is removed or contradicted, while remaining comparatively stable under information-preserving changes in presentation.
+\item
+  Evaluating retrieval quality together with runtime, memory, context size, and generation cost will reveal practically important trade-offs that answer-quality measures alone do not capture.
+\item
+  Where historical evidence can be verified, graph context available before a reference date will improve retrospective identification or explanation of later-supported relationships relative to a no-retrieval baseline.
+\end{enumerate}
+
+These hypotheses describe the questions to be tested and do not imply that the corresponding improvements have already been demonstrated.
+
+\section{Objectives}\label{objectives}
+
+\subsubsection{General objective}\label{general-objective}
+
+To develop and evaluate an end-to-end biomedical GraphRAG framework that retrieves relevant evidence, preserves its provenance, and generates answers whose claims can be traced to and checked against that evidence, while operating within practical computational constraints.
+
+\subsubsection{Specific objectives}\label{specific-objectives}
+
+The project will:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Establish a reproducible processing pipeline for selected public biomedical knowledge graphs.
+\item
+  Develop a query-processing component that identifies biomedical mentions and maps them to candidate graph entities.
+\item
+  Implement and compare several complementary subgraph-retrieval approaches.
+\item
+  Investigate evidence-organization strategies that preserve relationship semantics and source attribution.
+\item
+  Associate generated factual claims with identifiable supporting evidence and distinguish established relationships from interpretations and hypotheses.
+\item
+  Evaluate entity grounding, retrieval quality, factuality, attribution, robustness, and computational efficiency.
+\item
+  Investigate evidence dependence through controlled changes to the supplied context.
+\item
+  Assess the feasibility of a temporally informed benchmark using versioned graph resources and independently verified later evidence.
+\item
+  Produce documented research artifacts that support reproduction within applicable licensing and institutional constraints.
+\end{enumerate}
+
+\section{Methodology}\label{methodology}
+
+\subsubsection{Study design}\label{study-design}
+
+The project will follow a comparative computational study design. A modular pipeline will allow query-processing, retrieval, context-organization, and generation components to be evaluated independently and in combination.
+
+The principal study will compare retrieval approaches and assess how their outputs affect downstream generation. Development and validation questions will be separated from the final test set. Parameters, prompts, and model-selection decisions will be established without using held-out test results.
+
+The study will distinguish component-level evaluation from end-to-end evaluation. This distinction will help identify whether a failure originates in entity grounding, retrieval, context construction, or generation.
+
+\subsubsection{Knowledge sources and graph preparation}\label{knowledge-sources-and-graph-preparation}
+
+PrimeKG and OptimusKG will be considered as the main public knowledge resources. Their selection will depend on biomedical coverage, accessibility, provenance, relationship semantics, and computational requirements (Chandak et al., 2023; Vittor et al., 2026).\refmark{8}\refmark{9}
+
+For each selected artifact, the study will document:
+
+\begin{itemize}
+\tightlist
+\item
+  Dataset version and acquisition date.
+\item
+  Available source and evidence metadata.
+\item
+  Entity identifiers and relationship definitions.
+\item
+  Preprocessing, filtering, and deduplication procedures.
+\item
+  Cross-resource entity and relationship mappings.
+\item
+  Applicable data and software licenses.
+\end{itemize}
+
+Graph preparation will preserve relationship direction and type. Cross-resource mappings will be documented explicitly rather than assuming that similarly named entities or relations are equivalent.
+
+Publication and release dates will not be treated as uniform evidence cutoffs. When temporal information is unavailable, this limitation will be reported.
+
+\subsubsection{End-to-end architecture}\label{end-to-end-architecture}
+
+The framework will contain four main processing stages:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Query processing and entity grounding.
+\item
+  Subgraph retrieval.
+\item
+  Evidence organization and context construction.
+\item
+  Evidence-grounded generation and claim verification.
+\end{enumerate}
+
+This structure follows the general GraphRAG architecture described by Han et al., with verification and provenance treated as cross-cutting requirements rather than isolated final-stage features.\refmark{2}
+
+Intermediate outputs will be retained to support auditing and error analysis.
+
+\subsubsection{Query processing and entity grounding}\label{query-processing-and-entity-grounding}
+
+The query processor will identify biomedical mentions, including multiword expressions, and map them to candidate graph nodes. Candidate selection will combine lexical similarity with embedding-based semantic similarity, using available names, synonyms, descriptions, and entity types.
+
+Domain-specific representations will be considered where appropriate. SapBERT provides a relevant reference for aligning synonymous biomedical names in a shared representation space (Liu et al., 2021).\refmark{10}
+
+The component will account for ambiguous and low-confidence matches rather than always forcing a single entity assignment. Simple lexical matching, embedding-only matching, and manually verified seed selections will provide useful comparison conditions.
+
+Entity grounding will be evaluated separately so that downstream retrievers can also be compared using the same verified seed entities.
+
+\subsubsection{Subgraph retrieval}\label{subgraph-retrieval}
+
+Several retrieval approaches are under investigation. The proposal groups them into the following families without fixing their final algorithmic configurations:
+
+{
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Retrieval family
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Main purpose
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Connectivity-oriented retrieval & Identify compact evidence connecting query-relevant entities \\
+Semantic clustering & Group semantically related candidates into coherent evidence sets \\
+Overlapping or soft semantic clustering & Allow entities to contribute to multiple evidence groups and expose connections between them \\
+Topology-based retrieval & Exploit graph structure or communities to retrieve relevant regions efficiently \\
+Query-conditioned diffusion & Propagate relevance from grounded entities while investigating ways to favor evidence connecting multiple query entities \\
+\end{longtable}
+}
+
+G-Retriever and HippoRAG provide relevant precedents for connectivity-oriented extraction and diffusion-based retrieval, respectively. GNN-RAG and GFM-RAG will inform the assessment of learned retrieval alternatives and potential additional baselines (He et al., 2024; Jiménez Gutiérrez et al., 2024; Mavromatis and Karypis, 2025; Luo et al., 2025).\refmark{4}\refmark{5}\refmark{6}\refmark{7}
+
+The proposed diffusion work will investigate query-conditioned propagation and multi-entity connectivity. Any stronger claim about a new geometric or curvature-based formulation will depend on a precise mathematical definition and supporting experiments.
+
+Retrievers will be evaluated under explicit constraints on graph expansion, output size, context length, and runtime. Timeouts and resource failures will be recorded rather than omitted from the comparison.
+
+\subsubsection{Evidence organization and context construction}\label{evidence-organization-and-context-construction}
+
+Retrieved subgraphs will be transformed into representations suitable for language-model input while preserving the meaning and origin of the evidence.
+
+Candidate formats will include structured triples, paths, and grouped evidence. The comparison will examine whether different representations preserve attribution and support coherent answers under a fixed context budget.
+
+Overlapping clusters may be used to construct alternative evidence groupings. These will be treated as candidate explanatory contexts, not as established biological mechanisms.
+
+A secondary experiment may process evidence groups separately before synthesizing the resulting outputs. Because this configuration adds model calls and changes the generation architecture, it will be evaluated separately from comparisons intended to isolate retrieval quality.
+
+\subsubsection{Traceability and provenance preservation}\label{traceability-and-provenance-preservation}
+
+
+Where available, evidence records will retain stable identifiers, relationship types, source references, graph versions, and relevant temporal metadata.
+
+Context construction will preserve these identifiers so that the final answer can be mapped back to the evidence supplied to the model. If the graph exposes only a source database rather than an original publication, the system will report that level of provenance rather than imply access to more detailed evidence.
+
+The audit trail will document what information was retrieved and supplied. It will not, by itself, establish that the model used every cited item.
+
+
+
+\subsubsection{Baselines and controlled comparisons}\label{baselines-and-controlled-comparisons}
+
+Core baselines will include:
+
+\begin{itemize}
+\tightlist
+\item
+  An LLM without retrieved context.
+\item
+  Embedding-based retrieval without explicit graph-connectivity optimization.
+\item
+  Simple graph retrieval, such as bounded neighborhood expansion.
+\item
+  Selected published or implemented graph-retrieval approaches.
+\end{itemize}
+
+To isolate retrieval effects, comparisons will use the same grounded entities, graph, generator, prompt, and context budget where feasible.
+
+Separate experiments will assess the full pipeline, including automatic entity grounding. Multi-model synthesis will be reported as a distinct configuration because it changes both the computational budget and the generation process.
+
+Repeated runs and uncertainty estimates will be used where feasible, particularly for stochastic generation.
+
+\subsubsection{Temporally informed benchmark}\label{temporally-informed-benchmark}
+
+A complementary work package will investigate whether historical graph evidence can support the retrospective identification or explanation of relationships substantiated later.
+
+Temporal biomedical evaluation already has relevant precedents, including PrimeKG-CL and THBKG. The proposed benchmark will therefore focus on the contribution of retrieved subgraphs, evidence attribution, and controlled generation rather than claiming novelty from temporal splitting alone (Radwan et al., 2026; Siu et al., 2026).\refmark{16}\refmark{17}
+
+Where suitable evidence dates are available, benchmark construction will:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Define a historical evidence boundary.
+\item
+  Identify later-supported relationships between entities already present in the historical graph.
+\item
+  Verify that those relationships were not directly available in the permitted historical context.
+\item
+  Check equivalent, inverse, duplicated, and alternative representations.
+\item
+  Construct questions that do not reveal the withheld relationship.
+\item
+  Compare no-retrieval generation with generation supported by historical graph evidence.
+\item
+  Retain later evidence as a separate reference condition.
+\end{enumerate}
+
+Historical conditions will exclude future graph structure, future-derived embeddings, and summaries constructed from later information.
+
+An edge newly represented in OptimusKG but absent from PrimeKG will not automatically qualify as a newly discovered relationship. Differences in source coverage, schema, and integration must first be considered.\refmark{8}\refmark{9}
+
+If historical novelty cannot be established, the experiment will be reported as cross-resource relationship completion rather than historical discovery prediction.
+
+Language-model knowledge will be treated as another possible source of contamination. For example, GPT-4.1 has a documented June 2024 knowledge cutoff, but this does not expose its exact training examples. The study will report model versions, documented cutoffs, evidence dates, and no-retrieval performance without claiming that an incorrect baseline answer proves absence from training (OpenAI, n.d.).\refmark{18}
+
+Finally, predictive success and historical factual support will be scored separately. A later-confirmed relationship may constitute a useful retrospective hypothesis while remaining unsupported as an established fact by the historical context.
+
+\subsubsection{Reproducibility and responsible use}\label{reproducibility-and-responsible-use}
+
+The study will document graph versions, preprocessing, prompts, model identifiers, retrieval parameters, software dependencies, and relevant hardware.
+
+Public release will be limited to materials permitted by dataset licenses and institutional agreements. The framework will support evidence exploration and hypothesis generation, not autonomous clinical recommendations or experimental decisions.
+
+\needspace{24\baselineskip}
+
+\section{Expected Contributions}\label{expected-contributions}
+
+The project is expected to produce:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A modular biomedical GraphRAG implementation supporting comparative evaluation.
+\item
+  A characterization of retrieval-quality and computational-efficiency trade-offs.
+\item
+  A provenance-preserving approach to context construction and claim-to-evidence attribution.
+\item
+  An evaluation protocol separating factual correctness, contextual support, attribution, and evidence dependence.
+\item
+  Where feasible, a temporally informed or explicitly cross-resource benchmark for evaluating retrieved evidence.
+\item
+  Reproducible documentation and research artifacts within applicable release constraints.
+\end{enumerate}
+
+The principal contribution will be evidence about how to build and evaluate biomedical GraphRAG systems whose answers are not only useful, but also inspectable and appropriately supported. Claims of improved performance, methodological novelty, or deployment readiness will depend on the results.
+\IfFileExists{bibliography.tex}{\input{bibliography.tex}}{}
